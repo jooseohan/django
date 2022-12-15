@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>건강 예측 웹 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body, html {height:100%}
+
+            .bgimg{
+                background-image: url('https://img.freepik.com/free-vector/people-walking-and-sitting-at-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-for-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000.jpg');
+                min-height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+            .sidebar-menu li { width:200px; }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="bgimg">
+            <center>
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="{% url 'hospital' %}">병원 Top5</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="https://www.amc.seoul.kr/asan/main.do" target='_blank'>서울아산병원</a></li>
+                        <li><a href="http://www.samsunghospital.com/home/main/index.do" target='_blank'>삼성서울병원</a></li>
+                        <li><a href="http://www.snuh.org/intro.do" target='_blank'>서울대학교병원</a></li>
+                        <li><a href="https://sev.severance.healthcare/sev/index.do" target='_blank'>세브란스</a></li>
+                        <li><a href="https://www.cmcseoul.or.kr/page/main" target='_blank'>서울성모병원</a></li>
+                      </ul>
+                    </div>
+                </nav>
+
+            </center>
+            <div class="container">
+                <h1>질의응답</h1>
+                <p>답변하고 싶은 질문을 클릭하세요. :)</p>
+                <br>
+            {% if question_list %}
+                <ul class="nav nav-pills nav-stacked">
+                {% for question in question_list %}
+                    <li class="active"><a href="{% url 'question' question.id %}">{{ question.subject }}</a></li>
+                {% endfor %}
+                </ul>
+
+            {% else %}
+                <p>질문이 없습니다.</p>
+            {% endif %}
+            <button><a href="{% url 'question_create' %}">질문 등록하기</a></button>
+            </div>
+
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>건강 예측 웹 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body, html {
+                    height:100%;
+                    background: linear-gradient(rgb(89,208,255),rgb(255,255,255));
+            }
+            *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+            }
+
+            li{ list-style-type: none;}
+
+            section{
+                    height: 440px;
+                    padding-top: 38px;
+            }
+
+            .box{
+                    width: 1020px;
+                    margin: 0 auto;
+<!--                    border: solid 1px red;-->
+            }
+
+            .box h1{
+                font-size: 100px;
+                text-align: center;
+                color: rgb(40,145,255);
+            }
+
+            .item{
+                    width: 320px;
+                    height: 360px;
+                    float: left;
+                    margin-right: 20px;
+                    border:solid 1px #cccccc;
+                    margin:auto;
+            }
+
+            .item h3{
+                    pading: 15px;
+                    text-align: center;
+            }
+
+            .item p{
+                    line-height: 150%;
+                    text-align: center;
+            }
+
+            .item img{
+                    display: block;
+                    width: 320px;
+                    height: 360px;
+            }
+
+            .item form{
+                    width:fit-content;
+                    margin:auto;
+            }
+        </style>
+    </head>
+    <body>
+
+        <section>
+            <div class="box">
+                <h1>Health Care</h1>
+                <div class="item">
+                    <img src="https://images.pexels.com/photos/6942171/pexels-photo-6942171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <h3>당뇨병 예측하기!</h3>
+                    <p>
+                        나의 당뇨병 진단 여부 확인!
+                    <form action="predict">
+                    <button type="submit">시작하기</button>
+                    </form>
+                    </p>
+                </div>
+                <div class="item">
+                    <img src="https://images.freeimages.com/variants/KSZEXdmnmfojfiFRRMt8LZbm/f4a36f6589a0e50e702740b15352bc00e4bfaf6f58bd4db850e167794d05993d">
+                    <h3>심장마비 예측하기!</h3>
+                    <p>
+                        나의 심장마비 진단 여부 확인!
+                    <form action="heart">
+                    <button type="submit">시작하기</button>
+                    </form>
+                    </p>
+                </div>
+                <div class="item">
+                    <img src="https://images.pexels.com/photos/4386464/pexels-photo-4386464.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                    <h3>병원 찾기!</h3>
+                    <p>
+                        전국 TOP5 병원
+                    <form action="hospital">
+                    <button type="submit">병원을 찾아보자~</button>
+                    </form>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

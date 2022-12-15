@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>건강 예측 웹 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body, html {height:100%}
+            .bgimg{
+                background-image: linear-gradient(rgb(89,208,255),rgb(255,255,255));
+                min-height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+            .form-group h1{
+                font-size: 50px;
+                text-align: center;
+                color: rgb(199,20,255);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="bgimg">
+            <center>
+                <div class="form-group">
+                <h1>당뇨 예측을 위해 다음 정보를 입력해주세요.</h1>
+                    <br>
+                <p>
+                    <form action="result">
+                        <input type="text" name="n1" placeholder="임신 횟수">
+                        <span class="help-block">임신횟수를 입력하세요.</span>
+
+                        <input type="text" name="n2" placeholder="혈당 수치"><br>
+                        <span class="help-block"><a href="https://www.rapportian.com/news/photo/201712/108098_35233_4224.jpg">혈당수치 모르면 클릭</a></span>
+
+                        <input type="text" name="n3" placeholder="혈압(수축기)">
+                        <span class="help-block">최대 혈압을 입력하세요.</span>
+
+                        <input type="text" name="n4" placeholder="피부 두께">
+                        <span class="help-block">뺨을 엄지손가락과 검지손가락으로 꼬집었을 때 피부 두께를 mm단위로 입력하세요.</span>
+
+                        <input type="text" name="n5" placeholder="인슐린 수치">
+                        <span class="help-block">자가혈당 측정기를 사용하세요. (측정기가 없을 시 정상 체중은 공복 인슐린 농도는 약 5-15 uU/mL, 비만인 사람은 15-40 uU/mL)</span>
+
+                        <input type="text" name="n6" placeholder="체질량 지수">
+                        <span class="help-block"><a href="https://health.seoulmc.or.kr/healthCareInfo/myBMIPopup.do">체질량 지수 구하기</a></span>
+
+                        <input type="text" name="n7" placeholder="당뇨병 가계력">
+                        <span class="help-block">당뇨병 백분율을 입력하세요. (평균: 0.471876)</span>
+
+                        <input type="text" name="n8" placeholder="나이">
+                        <span class="help-block">나이를 입력하세요.</span>
+                        <br>
+                        <button type="submit">예측하기</button>
+                    </form>
+                </p>
+
+                <br>
+                <p>
+                    <form action="{% url 'index' %}">
+                        <button type="submit">처음으로 돌아가기</button>
+                    </form>
+                </p>
+                </div>
+            </center>
+        </div>
+    </body>
+</html>

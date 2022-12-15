@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>건강 예측 웹 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body, html {height:100%}
+            .inco h3{
+                border: solid 2px;
+            }
+            .inco strong{
+                color: red;
+            }
+
+            .bgimg{
+                background-image: url('https://img.freepik.com/free-vector/people-walking-and-sitting-at-hospital-building-city-clinic-glass-exterior-flat-vector-illustration-for-medical-help-emergency-architecture-healthcare-concept_74855-10130.jpg?w=2000.jpg');
+                min-height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+            textarea {
+                width:100%;
+            }
+            input[type=submit] {
+                margin-top:10px;
+            }
+
+            .pu ul{
+                width: 300px;
+            }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+
+
+        <div class="bgimg">
+            <center>
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                      <div class="navbar-header">
+                        <a class="navbar-brand" href="{% url 'hospital' %}">병원 Top5</a>
+                      </div>
+                      <ul class="nav navbar-nav">
+                        <li class="active"><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="https://www.amc.seoul.kr/asan/main.do" target='_blank'>서울아산병원</a></li>
+                        <li><a href="http://www.samsunghospital.com/home/main/index.do" target='_blank'>삼성서울병원</a></li>
+                        <li><a href="http://www.snuh.org/intro.do" target='_blank'>서울대학교병원</a></li>
+                        <li><a href="https://sev.severance.healthcare/sev/index.do" target='_blank'>세브란스</a></li>
+                        <li><a href="https://www.cmcseoul.or.kr/page/main" target='_blank'>서울성모병원</a></li>
+                      </ul>
+                    </div>
+                </nav>
+
+            </center>
+
+
+            <h1>{{ question.subject }}</h1><br>
+            <div class="inco">
+                <h3>{{ question.content }}</h3>
+            </div>
+
+            <!--수정/삭제-->
+<!--            <div class="my-3">-->
+<!--                {% if request.user == question.author %}-->
+<!--                <a href="{% url 'pybo:question_modify' question.id  %}"-->
+<!--                   class="btn btn-sm btn-outline-secondary">수정</a>-->
+<!--                {% endif %}-->
+<!--            </div>-->
+
+            <!--답변-->
+            <h5>{{ question.answer_set.count }}개의 답변이 있습니다.</h5>
+            <div class="pu">
+                <ul >
+                {% for answer in question.answer_set.all %}
+                    <li>{{ answer.content }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            <form action="{% url 'answer_create' question.id %}" method="post">
+            {% csrf_token %}
+
+            <!-- 오류표시 Start -->
+            {% if form.errors %}
+            <div class="inco">
+                {% for field in form %}
+                {% if field.errors %}
+                <div>
+                    <strong>{{ field.label }}</strong>
+                    <strong>{{ field.errors }}</strong>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <!-- 오류표시 End -->
+
+            <textarea name="content" id="content" rows="15"></textarea>
+            <input type="submit" value="답변등록">
+            </form>
+
+            <a href="{% url 'hospital' %}"><button>돌아가기</button></a>
+
+
+        </div>
+
+    </body>
+</html>

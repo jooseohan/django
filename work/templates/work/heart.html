@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>건강 예측 웹 서비스</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+            body, html {height:100%}
+            .bgimg{
+                background-image: linear-gradient(rgb(89,208,255),rgb(255,255,255));
+                min-height: 100%;
+                background-position: center;
+                background-size: cover;
+            }
+            .form-group h1{
+                font-size: 50px;
+                text-align: center;
+                color: rgb(199,20,255);
+            }
+        </style>
+    </head>
+    <body>
+    <div class="form-group">
+        <div class="bgimg">
+            <center>
+                <div class="form-group">
+                    <h1>심장마비 예측을 위해 다음 정보를 입력해주세요.</h1>
+                    <p>
+                        <form action="run">
+                            <input type="text" name="n1" placeholder="나이">
+                            <span class="help-block">나이를 입력하세요.</span>
+
+                            <input type="number" name="n2" min="0" max="1" value=0>
+                            <span class="help-block">성별을 클릭하세요. (남자는 1, 여자는 0)</span>
+
+                            <input type="number" name="n3" min="0" max="3" value="0">
+                            <span class="help-block">가슴 통증 타입 ( 모르면 1입력 )</span>
+
+                            <input type="text" name="n4" placeholder="혈압">
+                            <span class="help-block">안정시 혈압을 입력하세요.(휴식하고 있을 때)</span>
+
+                            <input type="text" name="n5" placeholder="혈청 콜레스테롤">
+                            <span class="help-block">혈청 콜레스테롤 평균은 100 ~ 129㎎/㎗입니다.</span>
+
+                            <input type="number" name="n6" min="0" max="1" value="0">
+                            <span class="help-block">공복 혈당을 입력하세요.(0: 혈당이 120㎎/ℓ 이하, 1: 혈당이 120㎎/ℓ 이상) (정상은 120㎎/ℓ 이하)</span>
+
+                            <input type="number" name="n7" min="0" max="2" value="0">
+                            <span class="help-block">심전도 (모르면 1을 입력하세요.)</span>
+
+                            <input type="text" name="n8" placeholder="최대 심장박동 수">
+                            <span class="help-block">최대 혈압을 입력하세요.</span>
+
+                            <input type="number" name="n9" min="0" max="1" value="0">
+                            <span class="help-block">운동 유도 협심증이 있나요?(no: 0 / yes: 1)</span>
+
+                            <input type="text" name="n10" placeholder="">
+                            <span class="help-block">운동에 의해 유발되는 St 우울증을 입력하세요.(평균: 1)</span>
+
+                            <input type="number" name="n11" min="0" max="2" value="0">
+                            <span class="help-block">ST 세그먼트의 기울기 (0~2) - (모르면 0을 입력하세요)</span>
+
+                            <input type="number" name="n12" min="0" max="4" value="0">
+                            <span class="help-block">혈관의 종류 (0~4) - (모르면 0을 입력하세요.)</span>
+
+                            <input type="number" name="n13" min="0" max="3" value="1">
+                            <span class="help-block">빈혈 결과(0: 소적혈구성, 1: 정상, 2 :용혈성, 3: 저색소성 빈혈)</span>
+                            <button type="submit">예측하기</button>
+                        </form>
+                    </p>
+
+                    <br>
+                    <p>
+                        <form action="{% url 'index' %}">
+                            <button type="submit">처음으로 돌아가기</button>
+                        </form>
+                    </p>
+                </div>
+            </center>
+        </div>
+    </div>
+    </body>
+</html>
